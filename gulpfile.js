@@ -47,8 +47,11 @@ var mainBowerFiles = require('main-bower-files');
 var markdown = require('gulp-markdown');
 
 // html
- var htmltidy = require('gulp-htmltidy');
- var htmlmin = require('gulp-html-minifier');
+var htmltidy = require('gulp-htmltidy');
+var htmlmin = require('gulp-html-minifier');
+
+// web server
+var webserver = require('gulp-webserver');
 
 
 var paths = {
