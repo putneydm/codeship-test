@@ -9,6 +9,7 @@ Uses Gulp, Bourbon and HTML5 Boilerplate to create a start for a basic website o
 * Modularization of HTML pages.
 * Base64 font encoding.
 * Markdown conversion for handling and adding content.
+* Server with live reload
 
 ##Installation
 * Clone
@@ -16,5 +17,5 @@ Uses Gulp, Bourbon and HTML5 Boilerplate to create a start for a basic website o
 * To use imageMagick tasks, install imageMagick via Homebrew.
 * `NPM install` to install gulp and its dependencies.
 * 'bower install' for Bower dependencies.
-* `bourbon install` in source/sass to install Bourbon dependency. `neat install` and `bitters` install are optional.
+* `cd source/sass` and `bourbon install && bitters install && neat install` to install bourbon, bitters and neat.
 * `gulp && gulp listen` to build site and output folder structure and rebuild on changes.
