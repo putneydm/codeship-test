@@ -144,22 +144,19 @@ gulp.task('exclude', function() {
    .pipe(minifyJS())
    .pipe(gulp.dest(paths.scripts.dist));
 });
-
 // lints main javascript file for site
 gulp.task('lint', function() {
   return gulp.src('source/scripts/functions.js')
     .pipe(jshint())
     .pipe(jshint.reporter(stylish));
 });
-
 //minifies scripts in the exclude folder and moves unminified to testing and minified to dist
-gulp.task('minifyScripts', function() {
-   gulp.src(paths.scripts.exclude)
-   .pipe(gulp.dest(paths.scripts.testing))
-   .pipe(minifyJS())
-   .pipe(gulp.dest(paths.scripts.dist));
-});
-
+// gulp.task('minifyScripts', function() {
+//    gulp.src(paths.scripts.exclude)
+//    .pipe(gulp.dest(paths.scripts.testing))
+//    .pipe(minifyJS())
+//    .pipe(gulp.dest(paths.scripts.dist));
+// });
 // lints and minifies css, moves to testing and dist
 gulp.task('css', function() {
   gulp.src([paths.styles.input, paths.styles.exclude])
