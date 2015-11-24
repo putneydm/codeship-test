@@ -177,8 +177,7 @@ gulp.task('css', function() {
     }))
     .pipe(gulp.dest(paths.styles.dist));
 });
-
-// creates svg sprite and moves it to testing and dist
+// creates svg sprite from folder of SVGs and moves it to testing and dist
 gulp.task('svg', function () {
     return gulp
         .src(paths.svg.input)
@@ -190,14 +189,13 @@ gulp.task('svg', function () {
         }))
         .pipe(gulp.dest(paths.svg.output));
 });
-
+// markdown converter
 gulp.task('markdown', function () {
     return gulp.src(paths.markdown.input)
         .pipe(markdown())
         .pipe(gulp.dest(paths.markdown.output));
 });
-
-// moves bower dependencies to vendor
+// moves bower dependencies to vendor folder
 gulp.task('bower', function() {
    return gulp.src(mainBowerFiles({
     paths: {
@@ -207,7 +205,7 @@ gulp.task('bower', function() {
 }))
     .pipe(gulp.dest(paths.bower.vendor))
 });
-
+// copies conents of the src siteart folder
 gulp.task('siteart', function() {
   return gulp.src(paths.siteart.input)
       .pipe(gulp.dest(paths.siteart.test))
@@ -270,57 +268,52 @@ gulp.task('appIcons', function() {
 
 // Spin up livereload server and listen for file changes
 gulp.task('listen', function () {
-    livereload.listen();
+    // livereload.listen();
     // page templates
     gulp.watch(paths.pageTemplates.input).on('change', function(file) {
-        gulp.start('templates');
-        gulp.start('refresh');
+      gulp.start('templates');
+      // gulp.start('refresh');
     });
     // scripts
-        gulp.watch(paths.scripts.input).on('change', function(file) {
-        gulp.start('lint');
-        gulp.start('concat');
-        gulp.start('refresh');
+      gulp.watch(paths.scripts.input).on('change', function(file) {
+      gulp.start('lint');
+      gulp.start('concat');
+      // gulp.start('refresh');
     });
     // css
       gulp.watch(paths.styles.watch).on('change', function(file) {
       gulp.start('css');
-      gulp.start('refresh');
+      // gulp.start('refresh');
     });
     // markdown
     gulp.watch(paths.markdown.input).on('change', function(file) {
       gulp.start('markdown');
-      gulp.start('refresh');
       gulp.start('templates');
     });
     gulp.watch(paths.html_partials.input).on('change', function(file) {
       gulp.start('templates');
-      gulp.start('refresh');
+      // gulp.start('refresh');
     });
     gulp.watch(paths.siteart.input).on('change', function(file) {
       gulp.start('siteart');
-      gulp.start('refresh');
+      // gulp.start('refresh');
     });
     gulp.watch(paths.scripts.exclude).on('change', function(file) {
       gulp.start('exclude');
-      gulp.start('refresh');
+      // gulp.start('refresh');
     });
 });
-
-// Run livereload after file change
-gulp.task('refresh', function () {
-    livereload.changed();
-});
-
+// // Run livereload after file change
+// gulp.task('refresh', function () {
+//     livereload.changed();
+// });
 // Compile files, generate docs, and run unit tests (default)
 gulp.task('default', [
 	'templates',
 	'css',
 	'svg',
-//  'appIcons',
 	'bower',
   'concat',
-	'minifyScripts',
   'markdown',
   'exclude'
 ]);
