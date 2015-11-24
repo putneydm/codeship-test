@@ -213,6 +213,16 @@ gulp.task('siteart', function() {
       .pipe(gulp.dest(paths.siteart.test))
       .pipe(gulp.dest(paths.siteart.dist));
 });
+// webserver with live reload
+gulp.task('webserver', function() {
+  gulp.src('test')
+    .pipe(webserver({
+      livereload: true,
+      directoryListing: false,
+      open: true,
+      // path:"test/"
+    }));
+});
 // creates blog images in four sizes, minifies, moves to testing and dist
 gulp.task('images', function () {
 
@@ -281,6 +291,7 @@ gulp.task('listen', function () {
     gulp.watch(paths.markdown.input).on('change', function(file) {
       gulp.start('markdown');
       gulp.start('refresh');
+      gulp.start('templates');
     });
     gulp.watch(paths.html_partials.input).on('change', function(file) {
       gulp.start('templates');
