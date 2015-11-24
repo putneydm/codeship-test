@@ -129,15 +129,6 @@ gulp.task('templates', function() {
    .pipe(gulp.dest(paths.pageTemplates.dist));
 });
 
-// gulp.task('browserify', function() {
-//     return browserify('source/scripts/app.js')
-//         .bundle()
-//         //Pass desired output filename to vinyl-source-stream
-//         .pipe(source('main.js'))
-//         // Start piping stream to tasks!
-//         .pipe(gulp.dest('public/scripts/'));
-// });
-
 // concatenates scripts, but not items in exclude folder. includes vendor folder
 gulp.task('concat', function() {
  //   var filterItems = filter(['!' + paths.scripts.exclude, '!' + paths.scripts.bower, '!' + paths.scripts.vendor]);
