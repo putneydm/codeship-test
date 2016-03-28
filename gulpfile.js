@@ -322,6 +322,7 @@ gulp.task('default', [
 	'css',
 	'svg',
 	'bower',
+  'lint',
   'concat',
   'markdown',
   'exclude'
