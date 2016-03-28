@@ -90,6 +90,11 @@ var paths = {
     input : 'source/svg/SVG_in/*.svg',
     output : 'source/svg/',
   },
+  fonts: {
+    input: 'src/fonts/*.css',
+    testing: 'test/fonts/',
+    dist: 'dist/fonts/'
+  },
   markdown : {
     input: 'source/markdown_in/**/*.md',
     output: 'source/content/'
@@ -188,6 +193,18 @@ gulp.task('svg', function () {
             extname: '.svg'
         }))
         .pipe(gulp.dest(paths.svg.output));
+});
+// converts fonts css into styles with Base 64 fonts embedded
+gulp.task('fonts', function () {
+    return gulp.src(paths.fonts.input)
+    .pipe(cssBase64({
+      maxImageSize: 8*10024 // bytes
+    }))
+    .pipe(gulp.dest(paths.fonts.testing))
+    .pipe(minifyCSS({
+      keepBreaks:false
+    }))
+    .pipe(gulp.dest(paths.fonts.dist));
 });
 // markdown converter
 gulp.task('markdown', function () {
