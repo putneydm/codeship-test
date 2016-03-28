@@ -274,25 +274,20 @@ gulp.task('appIcons', function() {
 });
 
 // gulp watches
-
 // Spin up livereload server and listen for file changes
 gulp.task('listen', function () {
-    // livereload.listen();
     // page templates
     gulp.watch(paths.pageTemplates.input).on('change', function(file) {
       gulp.start('templates');
-      // gulp.start('refresh');
     });
     // scripts
       gulp.watch(paths.scripts.input).on('change', function(file) {
       gulp.start('lint');
       gulp.start('concat');
-      // gulp.start('refresh');
     });
     // css
       gulp.watch(paths.styles.watch).on('change', function(file) {
       gulp.start('css');
-      // gulp.start('refresh');
     });
     // markdown
     gulp.watch(paths.markdown.input).on('change', function(file) {
@@ -301,22 +296,16 @@ gulp.task('listen', function () {
     });
     gulp.watch(paths.html_partials.input).on('change', function(file) {
       gulp.start('templates');
-      // gulp.start('refresh');
     });
     gulp.watch(paths.siteart.input).on('change', function(file) {
       gulp.start('siteart');
-      // gulp.start('refresh');
     });
     gulp.watch(paths.scripts.exclude).on('change', function(file) {
       gulp.start('exclude');
-      // gulp.start('refresh');
     });
 });
-// // Run livereload after file change
-// gulp.task('refresh', function () {
-//     livereload.changed();
-// });
-// Compile files, generate docs, and run unit tests (default)
+
+// Compile files
 gulp.task('default', [
 	'templates',
 	'css',
