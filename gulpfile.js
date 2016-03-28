@@ -1,44 +1,44 @@
 
-var gulp = require('gulp');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
+var gulp = require('gulp'),
+    browserify = require('browserify'),
+    source = require('vinyl-source-stream');
 
 //scripts
-var concat = require('gulp-concat');
-var minifyJS = require('gulp-uglify');
-var jshint = require('gulp-jshint');
+var concat = require('gulp-concat'),
+    minifyJS = require('gulp-uglify'),
+    jshint = require('gulp-jshint');
 
 //css
-var sass = require('gulp-sass');
-var minifyCSS = require('gulp-minify-css');
-var scsslint = require('gulp-scss-lint');
-var autoprefixer = require('gulp-autoprefixer');
-var cssbeautify = require('gulp-cssbeautify');
+var sass = require('gulp-sass'),
+    minifyCSS = require('gulp-minify-css'),
+    scsslint = require('gulp-scss-lint'),
+    autoprefixer = require('gulp-autoprefixer'),
+    cssbeautify = require('gulp-cssbeautify');
 
 //images
-var imagemin = require('gulp-imagemin');
-var jpegtran = require('imagemin-jpegtran');
-var gm = require('gulp-gm');
+var imagemin = require('gulp-imagemin'),
+    jpegtran = require('imagemin-jpegtran'),
+    gm = require('gulp-gm');
 
 //fonts
 var cssBase64 = require('gulp-css-base64');
 
 //utility
-var rename = require('gulp-rename');
-var fileinclude = require('gulp-file-include');
+var rename = require('gulp-rename'),
+    fileinclude = require('gulp-file-include');
 
 //var copy = require('gulp-copy');
 var clean = require('gulp-rimraf');
 
 //var filter = require('gulp-filter');
-var stylish = require('jshint-stylish');
-var rename = require('gulp-rename');
-var watch = require('gulp-watch');
-var livereload = require('gulp-livereload');
+var stylish = require('jshint-stylish'),
+    rename = require('gulp-rename'),
+    watch = require('gulp-watch'),
+    livereload = require('gulp-livereload');
 
 //svg
-var svgstore = require('gulp-svgstore');
-var svgmin = require('gulp-svgmin');
+var svgstore = require('gulp-svgstore'),
+    svgmin = require('gulp-svgmin');
 
 //bower
 var mainBowerFiles = require('main-bower-files');
@@ -47,18 +47,17 @@ var mainBowerFiles = require('main-bower-files');
 var markdown = require('gulp-markdown');
 
 // html
-var htmltidy = require('gulp-htmltidy');
-var htmlmin = require('gulp-html-minifier');
+var htmltidy = require('gulp-htmltidy'),
+    htmlmin = require('gulp-html-minifier');
 
 // web server
 var webserver = require('gulp-webserver');
 
-
 var paths = {
   pageTemplates : {
-   input : 'source/templates/**/{*.html,*shtml}',
-   testing: 'test/',
-   dist : 'public/'
+    input : 'source/templates/**/{*.html,*shtml}',
+    testing: 'test/',
+    dist : 'public/'
   },
   scripts : {
     input : 'source/scripts/*.js',
@@ -104,18 +103,18 @@ var paths = {
   },
   data: {
     input: 'source/data/**/*.*',
-    output: "test/data/",
-    dist: "public/data/"
+    output: 'test/data/',
+    dist: 'public/data/'
   },
   appIcons: {
     input: "source/appIcons/**/*.*",
-    dist: "public/"
+    dist: 'public/'
   },
   siteart: {
-    input: "source/siteart/*",
-    test: "test/siteart/",
+    input: 'source/siteart/*',
+    test:'test/siteart/',
     dist: 'public/siteart/'
-  },
+  }
 };
 
 // tasks
@@ -136,15 +135,14 @@ gulp.task('templates', function() {
 
 // concatenates scripts, but not items in exclude folder. includes vendor folder
 gulp.task('concat', function() {
- //   var filterItems = filter(['!' + paths.scripts.exclude, '!' + paths.scripts.bower, '!' + paths.scripts.vendor]);
-   gulp.src([paths.scripts.vendor, paths.scripts.input,'!' + paths.scripts.exclude, '!' + paths.scripts.bower])
+  gulp.src([paths.scripts.vendor, paths.scripts.input,'!' + paths.scripts.exclude, '!' + paths.scripts.bower])
    .pipe(concat('main.js'))
    .pipe(gulp.dest(paths.scripts.testing))
    .pipe(minifyJS())
    .pipe(gulp.dest(paths.scripts.dist));
 });
 gulp.task('exclude', function() {
-   gulp.src(paths.scripts.exclude)
+  gulp.src(paths.scripts.exclude)
    .pipe(gulp.dest(paths.scripts.testing))
    .pipe(minifyJS())
    .pipe(gulp.dest(paths.scripts.dist));
@@ -153,15 +151,9 @@ gulp.task('exclude', function() {
 gulp.task('lint', function() {
   return gulp.src('source/scripts/functions.js')
     .pipe(jshint())
-    .pipe(jshint.reporter(stylish));
+    .pipe(jshint.reporter(stylish))
+    .pipe(jshint.reporter('fail'));
 });
-//minifies scripts in the exclude folder and moves unminified to testing and minified to dist
-// gulp.task('minifyScripts', function() {
-//    gulp.src(paths.scripts.exclude)
-//    .pipe(gulp.dest(paths.scripts.testing))
-//    .pipe(minifyJS())
-//    .pipe(gulp.dest(paths.scripts.dist));
-// });
 // lints and minifies css, moves to testing and dist
 gulp.task('css', function() {
   gulp.src([paths.styles.input, paths.styles.exclude])
