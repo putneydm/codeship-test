@@ -319,6 +319,13 @@ gulp.task('listen', function () {
     });
 });
 
+gulp.task('prebuild', [
+	'bourbon',
+	'bitters',
+  'svg',
+  'markdown'
+]);
+
 // Compile files
 gulp.task('default', [
 	'templates',
