@@ -191,6 +191,16 @@ gulp.task('svg', function () {
         }))
         .pipe(gulp.dest(paths.svg.output));
 });
+gulp.task('bitters', function () {
+    return gulp.src(paths.bowerCSS.bitters)
+        .pipe(gulp.dest(paths.bowerCSS.css));
+});
+
+gulp.task('bourbon', function() {
+  return gulp.src(paths.bowerCSS.bourbon)
+    .pipe(gulp.dest(paths.bowerCSS.css));
+});
+
 // converts fonts css into styles with Base 64 fonts embedded
 gulp.task('fonts', function () {
     return gulp.src(paths.fonts.input)
