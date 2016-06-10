@@ -114,6 +114,11 @@ var paths = {
     input: 'source/siteart/*',
     test:'test/siteart/',
     dist: 'public/siteart/'
+  },
+  bowerCSS: {
+    bourbon: 'bower_components/bourbon/app/assets/stylesheets/**/*',
+    bitters: 'bower_components/bitters/core/*.scss',
+    css: 'source/sass/vendor/'
   }
 };
 
