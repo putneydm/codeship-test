@@ -137,7 +137,6 @@ gulp.task('templates', function() {
    .pipe(htmlmin({collapseWhitespace: true}))
    .pipe(gulp.dest(paths.pageTemplates.dist));
 });
-
 // concatenates scripts, but not items in exclude folder. includes vendor folder
 gulp.task('concat', function() {
   gulp.src([paths.scripts.vendor, paths.scripts.input,'!' + paths.scripts.exclude, '!' + paths.scripts.bower])
