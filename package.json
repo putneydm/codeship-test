@@ -41,8 +41,5 @@
     "lodash": "^3.10.0",
     "pos": "^0.2.0",
     "vinyl-source-stream": "^1.1.0"
-  },
-  "scripts": {
-    "build": "./node_modules/.bin/bower install ./node_modules/.bin/gulp prebuild && ./node_modules/.bin/gulp && ./node_modules/.bin/gulp listen && ./node_modules/.bin/gulp && ./node_modules/.bin/gulp webserver"
   }
 }
