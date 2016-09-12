@@ -173,9 +173,7 @@ gulp.task('css', function() {
         autosemicolon: true
     }))
    .pipe(gulp.dest(paths.styles.testing))
-    .pipe(minifyCSS({
-      keepBreaks:false
-    }))
+    .pipe(cleanCSS())
     .pipe(gulp.dest(paths.styles.dist));
 });
 // creates svg sprite from folder of SVGs and moves it to testing and dist
