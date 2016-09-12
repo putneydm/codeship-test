@@ -1,4 +1,3 @@
-//  this is a test
 
 var pageFunctions = {
     intialize: function () {
