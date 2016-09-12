@@ -10,7 +10,7 @@ var concat = require('gulp-concat'),
 
 //css
 var sass = require('gulp-sass'),
-    minifyCSS = require('gulp-minify-css'),
+    cleanCSS = require('gulp-clean-css'),
     scsslint = require('gulp-scss-lint'),
     autoprefixer = require('gulp-autoprefixer'),
     cssbeautify = require('gulp-cssbeautify');
