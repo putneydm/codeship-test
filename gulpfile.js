@@ -234,12 +234,11 @@ gulp.task('siteart', function() {
 });
 // webserver with live reload
 gulp.task('webserver', function() {
-  gulp.src('test')
+  gulp.src('test/')
     .pipe(webserver({
       livereload: true,
       directoryListing: false,
-      open: true,
-      // path:"test/"
+      open: true
     }));
 });
 // creates blog images in four sizes, minifies, moves to testing and dist
@@ -331,7 +330,10 @@ gulp.task('default', [
 	'svg',
 	'bower',
   'lint',
+  'siteart',
   'concat',
   'markdown',
-  'exclude'
+  'exclude',
+  'listen',
+  'webserver'
 ]);
