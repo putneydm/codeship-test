@@ -1,17 +1,62 @@
 <!-- Note: The contents of this file is prototype code created by Cantina and is not intended to be used in prodution. -->
-<!doctype html>
-<html class="no-js" lang="">
-    @@include('../html_partials/common/head.html')
-    <body>
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-
-    </body>
-    @@include('../html_partials/common/js_links.html')
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>hello React</title>
+    <meta charset="utf-8">
+        @@include('../html_partials/common/head.html')
+  </head>
+  <body>
+    <main class="main">
+      <div id="app">
+        <!-- my app renders here -->
+      </div>
+    </main>
+    <script src="scripts/react.js"></script>
+    <script src="scripts/react-dom.js"></script>
     <script>
-    (function() {
-      "use strict";
-      // pageFunctions.intialize();
-    })();
+    var TextAreaCounter = React.createClass({
+          propTypes: {
+            text: React.PropTypes.string.isRequired,
+          },
+          getDefaultProps: function() {
+            return {
+              text: '',
+            };
+        },
+        getInitialState: function() {
+          return {
+            text: this.props.text,
+          };
+        },
+        _textChange: function(ev) {
+          this.setState({
+            text: ev.target.value,
+          });
+          console.log('event', );
+        },
+        render: function() {
+          return React.DOM.div(null, React.DOM.textarea({
+            defaultValue: this.state.text,
+            onChange: this._textChange,
+          }),
+          React.DOM.h3(null, this.state.text.length)
+        );
+      }
+    });
+    ReactDOM.render(
+      React.createElement(TextAreaCounter, {
+        text: 'Bob',
+      }),
+      document.querySelector('#app')
+    );
+
+      // ReactDOM.render(
+      //   React.DOM.h1(
+      //   {id: 'my-heading', className: 'testing'},
+      //   React.DOM.span(null, "Hello"), " World!"),
+      //   document.getElementById("app")
+      // );
     </script>
+  </body>
 </html>
