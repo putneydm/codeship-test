@@ -325,6 +325,20 @@ gulp.task('prebuild', [
   'markdown'
 ]);
 
+gulp.task('remoteBuild', [
+	'templates',
+	'css',
+	'svg',
+	// 'bower',
+  // 'lint',
+  'siteart',
+  'concat',
+  'markdown',
+  'exclude'
+  // 'listen',
+  // 'webserver'
+]);
+
 // Compile files
 gulp.task('default', [
 	'templates',
