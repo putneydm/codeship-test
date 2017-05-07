@@ -234,7 +234,7 @@ gulp.task('siteart', function() {
 });
 // webserver with live reload
 gulp.task('webserver', function() {
-  gulp.src('test')
+  gulp.src('test/')
     .pipe(webserver({
       livereload: true,
       directoryListing: false,
