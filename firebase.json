@@ -1,5 +1,4 @@
 {
-  "firebase": "putneycodeshiptest",
   "database": {
     "rules": "database.rules.json"
   },
